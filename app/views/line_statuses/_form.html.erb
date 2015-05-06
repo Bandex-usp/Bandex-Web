@@ -1,0 +1,29 @@
+<%= form_for(@line_status) do |f| %>
+  <% if @line_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@line_status.errors.count, "error") %> prohibited this line_status from being saved:</h2>
+
+      <ul>
+      <% @line_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :submit_date %><br>
+    <%= f.datetime_select :submit_date %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :restaurant_id %><br>
+    <%= f.text_field :restaurant_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

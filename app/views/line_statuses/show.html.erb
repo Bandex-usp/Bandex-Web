@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Submit date:</strong>
+  <%= @line_status.submit_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @line_status.status %>
+</p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @line_status.restaurant %>
+</p>
+
+<%= link_to 'Edit', edit_line_status_path(@line_status) %> |
+<%= link_to 'Back', line_statuses_path %>

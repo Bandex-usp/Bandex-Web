@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  submit_date: 2015-05-06 00:13:32
+  status: 1
+  restaurant_id: 
+
+two:
+  submit_date: 2015-05-06 00:13:32
+  status: 1
+  restaurant_id: 

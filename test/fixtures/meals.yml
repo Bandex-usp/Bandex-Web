@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  main_course: MyString
+  meat: MyString
+  second_course: MyString
+  salad: MyString
+  optional: MyString
+  desert: MyString
+
+two:
+  main_course: MyString
+  meat: MyString
+  second_course: MyString
+  salad: MyString
+  optional: MyString
+  desert: MyString

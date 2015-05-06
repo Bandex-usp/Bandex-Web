@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meal_date: 2015-05-06
+  period: MyString
+  restaurant_id: 
+  meal_id: 
+
+two:
+  meal_date: 2015-05-06
+  period: MyString
+  restaurant_id: 
+  meal_id: 
