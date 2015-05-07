@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506031332) do
+ActiveRecord::Schema.define(version: 20150507010636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,13 @@ ActiveRecord::Schema.define(version: 20150506031332) do
 
   add_index "line_statuses", ["restaurant_id"], name: "index_line_statuses_on_restaurant_id", using: :btree
 
-  create_table "meals", force: :cascade do |t|
-    t.string   "main_course"
+  create_table "menu_entries", force: :cascade do |t|
+    t.date     "entry_date"
+    t.integer  "period"
+    t.integer  "restaurant_id"
+    t.string   "main"
     t.string   "meat"
-    t.string   "second_course"
+    t.string   "second"
     t.string   "salad"
     t.string   "optional"
     t.string   "desert"
@@ -37,16 +40,6 @@ ActiveRecord::Schema.define(version: 20150506031332) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "menu_entries", force: :cascade do |t|
-    t.date     "meal_date"
-    t.string   "period"
-    t.integer  "restaurant_id"
-    t.integer  "meal_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "menu_entries", ["meal_id"], name: "index_menu_entries_on_meal_id", using: :btree
   add_index "menu_entries", ["restaurant_id"], name: "index_menu_entries_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: :cascade do |t|
@@ -56,6 +49,5 @@ ActiveRecord::Schema.define(version: 20150506031332) do
   end
 
   add_foreign_key "line_statuses", "restaurants"
-  add_foreign_key "menu_entries", "meals"
   add_foreign_key "menu_entries", "restaurants"
 end

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Meal date:</strong>
-  <%= @menu_entry.meal_date %>
+  <strong>Entry date:</strong>
+  <%= @menu_entry.entry_date %>
 </p>
 
 <p>
@@ -16,8 +16,33 @@
 </p>
 
 <p>
-  <strong>Meal:</strong>
-  <%= @menu_entry.meal %>
+  <strong>Main:</strong>
+  <%= @menu_entry.main %>
+</p>
+
+<p>
+  <strong>Meat:</strong>
+  <%= @menu_entry.meat %>
+</p>
+
+<p>
+  <strong>Second:</strong>
+  <%= @menu_entry.second %>
+</p>
+
+<p>
+  <strong>Salad:</strong>
+  <%= @menu_entry.salad %>
+</p>
+
+<p>
+  <strong>Optional:</strong>
+  <%= @menu_entry.optional %>
+</p>
+
+<p>
+  <strong>Desert:</strong>
+  <%= @menu_entry.desert %>
 </p>
 
 <%= link_to 'Edit', edit_menu_entry_path(@menu_entry) %> |

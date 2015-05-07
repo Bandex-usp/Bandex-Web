@@ -12,20 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :meal_date %><br>
-    <%= f.date_select :meal_date %>
+    <%= f.label :entry_date %><br>
+    <%= f.date_select :entry_date %>
   </div>
   <div class="field">
     <%= f.label :period %><br>
-    <%= f.text_field :period %>
+    <%= f.number_field :period %>
   </div>
   <div class="field">
     <%= f.label :restaurant_id %><br>
     <%= f.text_field :restaurant_id %>
   </div>
   <div class="field">
-    <%= f.label :meal_id %><br>
-    <%= f.text_field :meal_id %>
+    <%= f.label :main %><br>
+    <%= f.text_field :main %>
+  </div>
+  <div class="field">
+    <%= f.label :meat %><br>
+    <%= f.text_field :meat %>
+  </div>
+  <div class="field">
+    <%= f.label :second %><br>
+    <%= f.text_field :second %>
+  </div>
+  <div class="field">
+    <%= f.label :salad %><br>
+    <%= f.text_field :salad %>
+  </div>
+  <div class="field">
+    <%= f.label :optional %><br>
+    <%= f.text_field :optional %>
+  </div>
+  <div class="field">
+    <%= f.label :desert %><br>
+    <%= f.text_field :desert %>
   </div>
   <div class="actions">
     <%= f.submit %>

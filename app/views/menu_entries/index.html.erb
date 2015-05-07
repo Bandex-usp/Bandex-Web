@@ -5,10 +5,15 @@
 <table>
   <thead>
     <tr>
-      <th>Meal date</th>
+      <th>Entry date</th>
       <th>Period</th>
       <th>Restaurant</th>
-      <th>Meal</th>
+      <th>Main</th>
+      <th>Meat</th>
+      <th>Second</th>
+      <th>Salad</th>
+      <th>Optional</th>
+      <th>Desert</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +21,15 @@
   <tbody>
     <% @menu_entries.each do |menu_entry| %>
       <tr>
-        <td><%= menu_entry.meal_date %></td>
+        <td><%= menu_entry.entry_date %></td>
         <td><%= menu_entry.period %></td>
-        <td><%= menu_entry.restaurant %></td>
-        <td><%= menu_entry.meal %></td>
+        <td><%= link_to menu_entry.restaurant.name, menu_entry.restaurant %></td>
+        <td><%= menu_entry.main %></td>
+        <td><%= menu_entry.meat %></td>
+        <td><%= menu_entry.second %></td>
+        <td><%= menu_entry.salad %></td>
+        <td><%= menu_entry.optional %></td>
+        <td><%= menu_entry.desert %></td>
         <td><%= link_to 'Show', menu_entry %></td>
         <td><%= link_to 'Edit', edit_menu_entry_path(menu_entry) %></td>
         <td><%= link_to 'Destroy', menu_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

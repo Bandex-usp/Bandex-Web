@@ -18,10 +18,10 @@ def getMenu(restaurante)
 	doc.xpath("//td").each do |e|
 		entry = Array.new
 		parse_html(e, entry)
-		# if restaurante == 'quimica'
-		# 	substrings.delete_at(-2)
-		# end
-		# substrings.each {|str| str.gsub!(/\/refresco|Opcional/, '')}
+		if restaurante == 'quimica'
+			entry.delete_at(-2)
+		end
+		entry.each {|str| str.gsub!(/\/refresco|Opcional/, '')}
 		menu_entries << entry
 	end
 
@@ -100,5 +100,5 @@ def clean(string)
 	string.strip!
 end
 
-# p getMenu('quimica')
+p getMenu('quimica')
 

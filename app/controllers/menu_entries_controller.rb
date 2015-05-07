@@ -69,6 +69,6 @@ class MenuEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_entry_params
-      params.require(:menu_entry).permit(:meal_date, :period, :restaurant_id, :meal_id)
+      params.require(:menu_entry).permit(:entry_date, :period, :restaurant_id, :main, :meat, :second, :salad, :optional, :desert)
     end
 end
