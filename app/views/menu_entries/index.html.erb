@@ -22,7 +22,7 @@
     <% @menu_entries.each do |menu_entry| %>
       <tr>
         <td><%= menu_entry.entry_date %></td>
-        <td><%= menu_entry.period %></td>
+        <td><%= menu_entry.period == 0 ? 'Lunch' : 'Dinner' %></td>
         <td><%= link_to menu_entry.restaurant.name, menu_entry.restaurant %></td>
         <td><%= menu_entry.main %></td>
         <td><%= menu_entry.meat %></td>

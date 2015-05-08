@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
   resources :menu_entries
   resources :line_statuses
-  resources :restaurants
+  resources :restaurants do 
+    resources :menu_entries
+    resources :line_statuses
+  end
+  get 'menu' => 'menu#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

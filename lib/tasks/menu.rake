@@ -10,6 +10,9 @@ namespace :menu do
 
   	menu = getMenu('quimica')
   	insertIntoDatabase(menu, 'quimica')
+
+  	menu = getMenu('fisica')
+  	insertIntoDatabase(menu, 'fisica')
   end
 
 end

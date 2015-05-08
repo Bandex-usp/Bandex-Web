@@ -4,7 +4,12 @@ class MenuEntriesController < ApplicationController
   # GET /menu_entries
   # GET /menu_entries.json
   def index
-    @menu_entries = MenuEntry.all
+    set_restaurant if params[:restaurant_id] != nil
+    if @restaurant != nil
+      @menu_entries = @restaurant.menu_entries
+    else
+      @menu_entries = MenuEntry.all
+    end
   end
 
   # GET /menu_entries/1
@@ -65,6 +70,10 @@ class MenuEntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_menu_entry
       @menu_entry = MenuEntry.find(params[:id])
+    end
+
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -100,5 +100,3 @@ def clean(string)
 	string.strip!
 end
 
-p getMenu('quimica')
-

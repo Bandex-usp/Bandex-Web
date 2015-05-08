@@ -24,6 +24,7 @@ class LineStatusesController < ApplicationController
   # POST /line_statuses
   # POST /line_statuses.json
   def create
+    p params
     @line_status = LineStatus.new(line_status_params)
 
     respond_to do |format|
