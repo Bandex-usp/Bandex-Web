@@ -22,7 +22,10 @@ def getMenu(restaurante)
 			entry.delete_at(-2)
 		end
 		entry.each {|str| str.gsub!(/\/refresco|Opcional/, '')}
-		
+		if entry.count > 8
+			entry[3] = entry[3] + '/' + entry[4]
+			entry.delete_at(4)
+		end
 		menu_entries << entry if entry.count == 8
 	end
 
@@ -100,4 +103,6 @@ def clean(string)
 	string.squeeze!(" ")
 	string.strip!
 end
+
+# p getMenu(nil)
 
