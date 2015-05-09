@@ -22,7 +22,8 @@ def getMenu(restaurante)
 			entry.delete_at(-2)
 		end
 		entry.each {|str| str.gsub!(/\/refresco|Opcional/, '')}
-		menu_entries << entry
+		
+		menu_entries << entry if entry.count == 8
 	end
 
 	days = ["SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO", "DOMINGO"]
