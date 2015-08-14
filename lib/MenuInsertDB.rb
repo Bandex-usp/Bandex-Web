@@ -5,6 +5,12 @@ def insertIntoDatabase(menu_hash, restaurant_name)
 
 	date = menu_hash[:date] # date = Time.new(2015,5,4)
 
+	last_date = restaurant.menu_entries.last.entry_date
+
+	if date < last_date
+		return
+	end
+
 	entries_array = menu_hash[:entries]
 
 	last_index = -1
@@ -31,12 +37,12 @@ def insertIntoDatabase(menu_hash, restaurant_name)
 		entry = restaurant.menu_entries.new(entry_date:meal_date, period:period)
 	
 		entry.update(
-			main:entry_array[1],
-			meat:entry_array[2],
-			second:entry_array[3],
-			salad:entry_array[4],
-			optional:entry_array[5],
-			desert:entry_array[6],
+			main:     entry_array[1],
+			meat:     entry_array[2],
+			second:   entry_array[3],
+			salad:    entry_array[4],
+			optional: entry_array[5],
+			desert:   entry_array[6]
 			)
 	end
 end
