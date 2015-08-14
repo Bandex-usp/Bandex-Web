@@ -21,7 +21,7 @@ def getMenu(restaurante)
 		if restaurante == 'quimica'
 			entry.delete_at(-2)
 		end
-		entry.each {|str| str.gsub!(/\/refresco|Opcional/, '')}
+		entry.each {|str| str.gsub!(/\/refresco|Opcional /, '')}
 		if entry.count > 8
 			entry[3] = entry[3] + '/' + entry[4]
 			entry.delete_at(4)

@@ -14,5 +14,4 @@ namespace :menu do
   	menu = getMenu('fisica')
   	insertIntoDatabase(menu, 'fisica')
   end
-
 end
