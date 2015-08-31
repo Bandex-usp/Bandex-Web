@@ -5,10 +5,12 @@ def insertIntoDatabase(menu_hash, restaurant_name)
 
 	date = menu_hash[:date] # date = Time.new(2015,5,4)
 
-	last_date = restaurant.menu_entries.last.entry_date
+	if restaurant.menu_entries.count > 0
+		last_date = restaurant.menu_entries.last.entry_date 
 
-	if date < last_date
-		return
+		if date < last_date
+			return
+		end
 	end
 
 	entries_array = menu_hash[:entries]
