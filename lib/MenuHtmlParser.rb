@@ -3,17 +3,21 @@ require 'nokogiri'
 require 'open-uri'
 
 def getMenu(restaurante)
-	
-	url = "http://www.usp.br/coseas/cardapio#{restaurante}.html"
-	url_file = open(url)
 
-	# file_name = 'Debug/domingo.html'
-	# url_file = File.open(file_name, 'r')
+	# url = "http://www.usp.br/coseas/cardapio#{restaurante}.html"
+	# url_file = open(url)
+
+	file_name = 'Debug/fisica-terca.html'
+	url_file = File.open(file_name, 'r')
 
 	body = url_file.read
 
-	body = body.force_encoding('windows-1252') if restaurante != 'fisica'
-		
+	if restaurante == 'fisica'
+		body = body.force_encoding('utf-8')
+	else
+		body = body.force_encoding('windows-1252')
+	end
+
 	doc = Nokogiri::HTML(body)
 
 	menu = Hash.new
@@ -30,12 +34,12 @@ def getMenu(restaurante)
 		end
 		entry.each {|str| str.gsub!(/\/refresco|Opcional /, '')}
 		if entry.count > 8
+			if entry.count > 9
+				entry[1] = entry[1] + '/' + entry[2]
+				entry.delete_at(2)
+			end
 			entry[3] = entry[3] + '/' + entry[4]
 			entry.delete_at(4)
-		end
-		if entry.count > 8
-			entry[1] = entry[1] + '/' + entry[2]
-			entry.delete_at(2)
 		end
 		menu_entries << entry if entry.count == 8
 	end
@@ -115,3 +119,4 @@ def clean(string)
 	string.strip!
 end
 
+p getMenu('fisica')
