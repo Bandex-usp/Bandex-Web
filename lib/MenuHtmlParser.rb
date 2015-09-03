@@ -4,11 +4,11 @@ require 'open-uri'
 
 def getMenu(restaurante)
 
-	# url = "http://www.usp.br/coseas/cardapio#{restaurante}.html"
-	# url_file = open(url)
+	url = "http://www.usp.br/coseas/cardapio#{restaurante}.html"
+	url_file = open(url)
 
-	file_name = 'Debug/fisica-terca.html'
-	url_file = File.open(file_name, 'r')
+	# file_name = 'Debug/fisica-terca.html'
+	# url_file = File.open(file_name, 'r')
 
 	body = url_file.read
 
@@ -119,4 +119,4 @@ def clean(string)
 	string.strip!
 end
 
-p getMenu('fisica')
+# p getMenu('fisica')
