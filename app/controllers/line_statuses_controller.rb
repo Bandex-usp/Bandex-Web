@@ -8,7 +8,7 @@ class LineStatusesController < ApplicationController
     @currentLineStatus = [0, 0, 0]
 
     start_time = Restaurant.openning(period(DateTime.now)) - 30.minutes
-    end_time = Restaurant.closing(period(DateTime.now))
+    end_time = Restaurant.closing(period(DateTime.now)) + 3.hours
 
     line_statuses = LineStatus.where('submit_date BETWEEN ? AND ?', start_time, end_time).all
 
@@ -52,8 +52,9 @@ class LineStatusesController < ApplicationController
   # POST /line_statuses
   # POST /line_statuses.json
   def create
-    p params
-    @line_status = LineStatus.new(line_status_params)
+    params = line_status_params
+    params['restaurant_id'] = params['restaurant_id'].to_i + 1
+    @line_status = LineStatus.new(params)
 
     respond_to do |format|
       if @line_status.save
