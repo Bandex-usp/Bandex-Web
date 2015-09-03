@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :line_statuses
   end
   get 'menu' => 'menu#index'
+  get 'line_status' => 'line_statuses#line_status'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

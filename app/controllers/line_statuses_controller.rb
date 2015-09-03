@@ -1,6 +1,34 @@
 class LineStatusesController < ApplicationController
   before_action :set_line_status, only: [:show, :edit, :update, :destroy]
 
+  def line_status
+
+    @lastSubmitDate = [DateTime.new, DateTime.new, DateTime.new]
+    weight_total = [0, 0, 0]
+    @currentLineStatus = [0, 0, 0]
+
+    start_time = Restaurant.openning(period(DateTime.now)) - 30.minutes
+    end_time = Restaurant.closing(period(DateTime.now))
+
+    line_statuses = LineStatus.where('submit_date BETWEEN ? AND ?', start_time, end_time).all
+
+    line_statuses.each do |line_status|
+        restaurant_id = line_status['restaurant_id'] - 1 
+        status = line_status['status']
+        submit_date = line_status['submit_date']
+        weight = submit_date - start_time
+        weight_total[restaurant_id] += weight
+        @lastSubmitDate[restaurant_id] = submit_date if submit_date > @lastSubmitDate[restaurant_id]
+        @currentLineStatus[restaurant_id] += weight * status
+    end
+
+    (0..2).each do |id|
+        if (weight_total[id] != 0) 
+            @currentLineStatus[id] = @currentLineStatus[id] / weight_total[id]
+        end
+    end
+  end
+
   # GET /line_statuses
   # GET /line_statuses.json
   def index
