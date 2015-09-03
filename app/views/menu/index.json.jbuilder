@@ -1,5 +1,5 @@
 json.array!(@restaurants) do |restaurant|
-	json.restaurant_id restaurant.id
+	json.restaurant_id (restaurant.id - 1)
 	json.set! 'days' do
 		json.array!(0..6) do |i|
 			json.entry_date @date+i.days

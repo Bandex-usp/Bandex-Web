@@ -1,7 +1,8 @@
 class MenuController < ApplicationController
 	def index
 		@restaurants = Restaurant.all
-		@date = MenuEntry.last.entry_date
+		entry = MenuEntry.last
+    @date = entry.entry_date unless entry.nil?
 		@date = @date - ((@date.wday - 1)%7).days
 	end
 end
