@@ -7,8 +7,11 @@ class LineStatusesController < ApplicationController
     weight_total = [0, 0, 0]
     @currentLineStatus = [0, 0, 0]
 
-    start_time = Restaurant.openning(period(DateTime.now)) - 30.minutes
-    end_time = Restaurant.closing(period(DateTime.now)) + 3.hours
+    # start_time = Restaurant.openning(period(DateTime.now)) - 30.minutes
+    # end_time = Restaurant.closing(period(DateTime.now))
+
+    start_time = DateTime.now.beginning_of_day
+    end_time = DateTime.now.end_of_day
 
     line_statuses = LineStatus.where('submit_date BETWEEN ? AND ?', start_time, end_time).all
 
