@@ -1,17 +1,9 @@
 namespace :menu do
-
-  desc "Fetch the semanal menu"
+  
+  desc "Fetch the menu"
   task fetch: :environment do
-  	require 'MenuHtmlParser'
-  	require 'MenuInsertDB'
+    require 'menu_fetcher'
 
-  	menu = getMenu(nil)
-  	insertIntoDatabase(menu, 'central')
-
-  	menu = getMenu('quimica')
-  	insertIntoDatabase(menu, 'quimica')
-
-  	menu = getMenu('fisica')
-  	insertIntoDatabase(menu, 'fisica')
+    MenuFetcher::get_menu
   end
 end
