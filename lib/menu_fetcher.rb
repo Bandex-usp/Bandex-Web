@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'awesome_print'
 require 'net/http'
 
 module MenuFetcher
