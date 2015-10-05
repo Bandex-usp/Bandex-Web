@@ -85,6 +85,7 @@ module MenuFetcher
           second:   menu_array[3],
           salad:    menu_array[4],
           desert:   menu_array[5],
+          calories: entry[:vlrclorfi],
           raw:      entry[:cdpdia].gsub('<br>', "\n").chomp
         )
       end
