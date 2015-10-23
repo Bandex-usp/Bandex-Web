@@ -50,7 +50,7 @@ module MenuFetcher
     request = Net::HTTP::Post.new url
 
     rest.each do |key, name|
-      restaurant = Restaurant.find_by(name:name)
+      # restaurant = Restaurant.find_by(name:name)
 
       request.body =  get_menu_body key, script_id
       response = http.request request
@@ -60,35 +60,65 @@ module MenuFetcher
       menu_array = eval(raw)
 
       menu_array.each do |entry|
-        entry_date = Date.parse(entry[:dtarfi])
-        menu_entry = MenuEntry.find_by(restaurant:restaurant, entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
-        if menu_entry.nil?
-          menu_entry = restaurant.menu_entries.new(entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
-        end
+        # entry_date = Date.parse(entry[:dtarfi])
+        # menu_entry = MenuEntry.find_by(restaurant:restaurant, entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
+        # if menu_entry.nil?
+        #   menu_entry = restaurant.menu_entries.new(entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
+        # end
 
-        menu_array = entry[:cdpdia].split('<br>')
-        next if menu_array.size < 7
-
-        if menu_array.size > 7
-          if menu_array.size > 8
-            menu_array[0] = menu_array[0] + '/' + menu_array[1]
-            menu_array.delete_at(1)
+        entry_array = entry[:cdpdia].split('<br>')
+        
+        entry_array.delete_if { |e| !(e =~ /([Rr]efresco|[Mm]inipão)/).nil? }
+        
+        main = []
+        optionals = []
+        salad = []
+        entry_array.delete_if do |e|
+          if e =~ /([Aa]rroz|[Ff]eijão)/
+            main << e
+            next true
           end
-          menu_array[4] = menu_array[4] + '/' + menu_array[5]
-          menu_array.delete_at(5)
+          if e =~ /([Oo]p(ção|cional)|PVT)/
+            optionals << e
+            next true
+          end
+          if e =~ /[Ss]alada/
+            salad << e
+            next true
+          end
         end
+        entry_array.insert(0, main.join('/'))
+        entry_array.insert(2, optionals.join('/'))
+        entry_array.insert(4, salad.join('/'))
+        
+        next if entry_array.size < 6
 
-        menu_entry.update(
-          main:     menu_array[0],
-          meat:     menu_array[1],
-          optional: menu_array[2],
-          second:   menu_array[3],
-          salad:    menu_array[4],
-          desert:   menu_array[5],
-          calories: entry[:vlrclorfi],
-          raw:      entry[:cdpdia].gsub('<br>', "\n").chomp
-        )
+        if entry_array.size > 6
+          if entry_array.size > 7
+            entry_array[0] = entry_array[0] + '/' + entry_array[1]
+            entry_array.delete_at(1)
+          end
+          entry_array[4] = entry_array[4] + '/' + entry_array[5]
+          entry_array.delete_at(5)
+        end
+        
+        puts name
+        puts entry_array
+        puts '------------------------------------------------------'
+
+        # menu_entry.update(
+        #   main:     entry_array[0],
+        #   meat:     entry_array[1],
+        #   optional: entry_array[2],
+        #   second:   entry_array[3],
+        #   salad:    entry_array[4],
+        #   desert:   entry_array[5],
+        #   calories: entry[:vlrclorfi],
+        #   raw:      entry[:cdpdia].gsub('<br>', "\n").chomp
+        # )
       end
     end
   end
 end
+
+MenuFetcher.get_menu

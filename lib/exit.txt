@@ -1,0 +1,248 @@
+central
+Arroz/feijão/arroz integral
+Bife de caçarola
+Opção: PVT com ervilha
+Batata corada
+Salada de catalonha
+Maçã
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Frango à passarinho
+Opção: PVT com mandioca
+Cenoura com vagem
+Salada de acelga
+Doce de leite com chocolate
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Filé de peito de frango empanado
+Opção: PVT com mandioquinha
+Chuchu com molho vinagrete
+Salada de alface
+Laranja
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Bife de contrafilé acebolado
+Opção: PVT com moyashi
+Creme de queijo
+Salada de mostarda
+Goiaba
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Filé de tilápia com molho mostarda
+Opção: PVT com cenoura
+Espinafre à provençal
+Salada de beterraba
+Barra de cereais
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Lombo assado
+Opção: PVT com couve-flor
+Batata doce sauté
+Salada de escarola
+Maçã
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Frango assado
+Opção: PVT com brócolis
+Polenta
+Salada de almeirão
+Kiwi
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Linguiça
+Opção: PVT com molho de especiarias
+Abobrinha ao forno com queijo
+Salada de alface
+Bananinha
+------------------------------------------------------
+central
+Arroz/feijão preto/arroz integral
+Carne moída
+Opção: PVT à napolitana
+Abóbora refogada
+Salada de mostarda
+Goiabada
+------------------------------------------------------
+central
+Arroz/feijão preto/arroz integral
+Carne em cubos com molho de mostarda
+Opção: PVT com alho poró
+Farofa colorida
+Salada de almeirão
+Laranja
+------------------------------------------------------
+central
+Arroz/feijão/arroz integral
+Filé de coxa de frango com molho de abacaxi
+Opção: PVT à hawaiana
+Berinjela à italiana
+Salada de repolho
+Maçã
+------------------------------------------------------
+central
+Arroz com açafrão/Arroz integral
+Carne em tiras  com molho madeira
+Opção: PVT com cogumelos
+Canelone ao sugo
+Salada de alface
+Pudim - Kiwi
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Bife de caçarola
+Opção:PVT com ervilha
+Batata corada
+Salada de almeirão
+Maçã
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Frango à passarinho
+Opção:PVT com mandioca
+Cenoura com vagem
+Salada de acelga
+Doce de leite com chocolate
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Filé de peito de frango empanado
+Opção:PVT com mandioquinha
+Chuchu com molho vinagrete
+Salada de alface
+Laranja
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Bife de contrafilé acebolado
+Opção:PVT com moyashi
+Creme de queijo
+Salada de mostarda
+Goiaba
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Filé de peixe com molho mostarda
+Opção:PVT à caipira
+Espinafre à provençal
+Salada de beterraba
+Barra de cereais
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Lombo assado
+Opção:PVT com couve-flor
+Batata doce sauté
+Salada de escarola
+Maçã
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Frango assado
+Opção:PVT com brócolis
+Polenta
+Salada de catalonha
+Kiwi
+------------------------------------------------------
+fisica
+Arroz/feijão/arroz integral
+Almôndegas ao sugo
+Opção:PVT com cogumelos
+Abobrinha ao forno com queijo
+Salada de alface
+Bananinha
+------------------------------------------------------
+fisica
+Arroz/feijão preto/arroz integral
+Carne em tiras à napolitana
+Opção:PVT à napolitana
+Abóbora refogada
+Salada de mostarda
+Goiabada
+------------------------------------------------------
+fisica
+Arroz/feijão preto/arroz integral
+Cupim com molho ferrugem
+Opção:PVT com alho poró
+Farofa colorida
+Salada de almeirão
+Laranja
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Bife de contra filé com molho vinagrete
+Opção: Bife de PVT ao molho vinagrete
+Purê de batata
+Salada de repolho
+Doce de goiabada
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Filé de frango com molho argentino 
+Opção: Polenta recheada com PVT
+Repolho com milho 
+Salada de beterraba
+Mamão
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Bisteca com molho agridoce
+Opção: Feijoada vegetariana
+Couve refogada
+Salada de pepino
+Laranja
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Peixe assado
+Opção: PVT refogado 
+Pirão de legumes
+Salada de repolho
+Sorvete
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Lagarto com molho de ervas
+Opção: PVT com legumes (mandioca, couve flor, brócolis)
+Abobrinha no vapor
+Salada de agrião
+Gelatina
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Filé de frango com molho roti
+Opção: Almondegas de PVT
+Berinjela com pimentão	
+Salada de alface 
+Banana
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Frango assado com molho shoyu
+Opção: PVT com cogumelos
+Polenta cremosa
+Salada de repolho
+Melão
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Bife de contra filé
+Opção: PVT com azeitonas
+Acelga no shoyu
+Salada de soja 
+Curau
+------------------------------------------------------
+quimica
+Arroz/feijão/arroz integral
+Frango Xadrez 
+Opção: PVT Rico/Opcional: PVT com cogumelos
+Acelga na salsa
+Salada de pepino
+Maçã
+------------------------------------------------------
