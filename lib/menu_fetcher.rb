@@ -50,7 +50,7 @@ module MenuFetcher
     request = Net::HTTP::Post.new url
 
     rest.each do |key, name|
-      # restaurant = Restaurant.find_by(name:name)
+      restaurant = Restaurant.find_by(name:name)
 
       request.body =  get_menu_body key, script_id
       response = http.request request
@@ -60,11 +60,11 @@ module MenuFetcher
       menu_array = eval(raw)
 
       menu_array.each do |entry|
-        # entry_date = Date.parse(entry[:dtarfi])
-        # menu_entry = MenuEntry.find_by(restaurant:restaurant, entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
-        # if menu_entry.nil?
-        #   menu_entry = restaurant.menu_entries.new(entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
-        # end
+        entry_date = Date.parse(entry[:dtarfi])
+        menu_entry = MenuEntry.find_by(restaurant:restaurant, entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
+        if menu_entry.nil?
+          menu_entry = restaurant.menu_entries.new(entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
+        end
 
         entry_array = entry[:cdpdia].split('<br>')
         
@@ -101,21 +101,17 @@ module MenuFetcher
           entry_array[4] = entry_array[4] + '/' + entry_array[5]
           entry_array.delete_at(5)
         end
-        
-        puts name
-        puts entry_array
-        puts '------------------------------------------------------'
 
-        # menu_entry.update(
-        #   main:     entry_array[0],
-        #   meat:     entry_array[1],
-        #   optional: entry_array[2],
-        #   second:   entry_array[3],
-        #   salad:    entry_array[4],
-        #   desert:   entry_array[5],
-        #   calories: entry[:vlrclorfi],
-        #   raw:      entry[:cdpdia].gsub('<br>', "\n").chomp
-        # )
+        menu_entry.update(
+          main:     entry_array[0],
+          meat:     entry_array[1],
+          optional: entry_array[2],
+          second:   entry_array[3],
+          salad:    entry_array[4],
+          desert:   entry_array[5],
+          calories: entry[:vlrclorfi],
+          raw:      entry[:cdpdia].gsub('<br>', "\n").chomp
+        )
       end
     end
   end
