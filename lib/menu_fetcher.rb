@@ -66,15 +66,15 @@ module MenuFetcher
           menu_entry = restaurant.menu_entries.new(entry_date:entry_date, period:((entry[:tiprfi] == 'A') ? 0 : 1))
         end
 
-        entry_array = entry[:cdpdia].split('<br>')
+        entry_array = entry[:cdpdia].split('<br>').map(&:strip)
         
         entry_array.delete_if { |e| !(e =~ /([Rr]efresco|[Mm]inipão)/).nil? }
         
         main = []
         optionals = []
         salad = []
-        entry_array.delete_if do |e|
-          if e =~ /([Aa]rroz|[Ff]eijão)/
+        entry_array.delete_if.with_index do |e, i|
+          if (e =~ /([Aa]rroz|[Ff]eijão)/) && i <= 2
             main << e
             next true
           end
@@ -92,15 +92,6 @@ module MenuFetcher
         entry_array.insert(4, salad.join('/'))
         
         next if entry_array.size < 6
-
-        if entry_array.size > 6
-          if entry_array.size > 7
-            entry_array[0] = entry_array[0] + '/' + entry_array[1]
-            entry_array.delete_at(1)
-          end
-          entry_array[4] = entry_array[4] + '/' + entry_array[5]
-          entry_array.delete_at(5)
-        end
 
         menu_entry.update(
           main:     entry_array[0],
