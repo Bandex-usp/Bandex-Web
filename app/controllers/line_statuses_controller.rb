@@ -7,10 +7,6 @@ class LineStatusesController < ApplicationController
     weight_total = [0, 0, 0]
     @currentLineStatus = [0, 0, 0]
 
-    # start_time = Restaurant.openning(period(DateTime.now)) - 30.minutes
-    # end_time = Restaurant.closing(period(DateTime.now))
-
-
     start_time = 45.minutes.ago
     end_time = Time.current
 
@@ -19,7 +15,7 @@ class LineStatusesController < ApplicationController
     line_statuses.each do |line_status|
         restaurant_id = line_status['restaurant_id'] - 1
         status = line_status['status']
-        submit_date = line_status['submit_date'].to_time
+        submit_date = line_status['submit_date'].in_time_zone("Brasilia")
         weight = calculate_weight(end_time - submit_date)
         weight_total[restaurant_id] += weight
         @lastSubmitDate[restaurant_id] = submit_date if submit_date > @lastSubmitDate[restaurant_id]
@@ -34,7 +30,7 @@ class LineStatusesController < ApplicationController
   end
 
   def calculate_weight interval
-    interval = interval / 30.minutes
+    interval = interval / 45.minutes
     Math.exp(-(interval**2)*6) * 0.9 + 0.1
   end
 
