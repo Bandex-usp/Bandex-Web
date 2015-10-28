@@ -3,33 +3,43 @@ class LineStatusesController < ApplicationController
 
   def line_status
 
-    @lastSubmitDate = [DateTime.new, DateTime.new, DateTime.new]
+    @last_submit_date = [DateTime.new, DateTime.new, DateTime.new]
     weight_total = [0, 0, 0]
     @currentLineStatus = [0, 0, 0]
+    @last_line_status = [-1, -1, -1]
 
-    # start_time = Restaurant.openning(period(DateTime.now)) - 30.minutes
-    # end_time = Restaurant.closing(period(DateTime.now))
-
-    start_time = DateTime.now.beginning_of_day
-    end_time = DateTime.now.end_of_day
+    start_time = 30.minutes.ago
+    end_time = Time.current
 
     line_statuses = LineStatus.where('submit_date BETWEEN ? AND ?', start_time, end_time).all
 
     line_statuses.each do |line_status|
-        restaurant_id = line_status['restaurant_id'] - 1 
+        restaurant_id = line_status['restaurant_id'] - 1
         status = line_status['status']
-        submit_date = line_status['submit_date']
-        weight = submit_date - start_time
+        submit_date = line_status['submit_date'].in_time_zone("Brasilia")
+        weight = calculate_weight(end_time - submit_date)
         weight_total[restaurant_id] += weight
-        @lastSubmitDate[restaurant_id] = submit_date if submit_date > @lastSubmitDate[restaurant_id]
-        @currentLineStatus[restaurant_id] += weight * status
+        @last_submit_date[restaurant_id] = submit_date if submit_date > @last_submit_date[restaurant_id]
+        @currentLineStatus[restaurant_id] += weight * status.to_f
     end
-
+    
     (0..2).each do |id|
-        if (weight_total[id] != 0) 
-            @currentLineStatus[id] = @currentLineStatus[id] / weight_total[id]
+      if (weight_total[id] != 0)
+          @currentLineStatus[id] = @currentLineStatus[id] / weight_total[id]
+      end
+      if @last_submit_date[id] == DateTime.new
+        last_status = Restaurant.find(id+1).line_statuses.last
+        last_date = last_status.submit_date.in_time_zone("Brasilia")
+        if (end_time - last_date < 2.5.hours)
+          @last_line_status[id] = last_status.status
+          @last_submit_date[id] = last_date
         end
+      end
     end
+  end
+
+  def calculate_weight interval
+    interval = interval / 30.minutes
   end
 
   # GET /line_statuses
