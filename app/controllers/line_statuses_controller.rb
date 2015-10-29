@@ -58,7 +58,7 @@ class LineStatusesController < ApplicationController
   # POST /line_statuses.json
   def create
     start_time = Restaurant.openning(period(Time.current)) - 30.minutes
--   end_time = Restaurant.closing(period(Time.current))
+    end_time = Restaurant.closing(period(Time.current))
     unless Time.current.between?(start_time, end_time)
       render :nothing => true, :status => 403, :content_type => 'application/json'
       return
