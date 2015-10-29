@@ -22,5 +22,13 @@ module BandexWeb
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    
+    RailsAdmin.config do |config|
+      config.authorize_with do
+        authenticate_or_request_with_http_basic('admin admin sqn') do |username, password|
+          username == ENV['RAILS_ADMIN_USER'] && password == ENV['RAILS_ADMIN_PASS']
+        end
+      end
+    end
   end
 end

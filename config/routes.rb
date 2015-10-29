@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :menu_entries
-  resources :line_statuses
-  resources :restaurants do 
-    resources :menu_entries
-    resources :line_statuses
+  resources :menu_entries, only: [:index, :show]
+  resources :line_statuses, only: [:index, :create, :show]
+  resources :restaurants, only: [:index, :show] do
+    resources :menu_entries, only: [:index]
+    resources :line_statuses, only: [:index]
   end
   get 'menu' => 'menu#index'
   get 'line_status' => 'line_statuses#line_status'

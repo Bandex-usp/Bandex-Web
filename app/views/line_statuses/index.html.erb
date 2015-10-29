@@ -18,14 +18,9 @@
         <td><%= line_status.submit_date %></td>
         <td><%= line_status.restaurant.name %></td>
         <td><%= line_status.status %></td>
-        <td><%= link_to 'Show', line_status %></td>
-        <td><%= link_to 'Edit', edit_line_status_path(line_status) %></td>
-        <td><%= link_to 'Destroy', line_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Line status', new_line_status_path %>

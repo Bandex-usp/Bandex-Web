@@ -37,7 +37,7 @@ class LineStatusesController < ApplicationController
   # GET /line_statuses
   # GET /line_statuses.json
   def index
-    @line_statuses = LineStatus.all
+    @line_statuses = LineStatus.all.reverse
   end
 
   # GET /line_statuses/1
@@ -57,6 +57,12 @@ class LineStatusesController < ApplicationController
   # POST /line_statuses
   # POST /line_statuses.json
   def create
+    start_time = Restaurant.openning(period(Time.current)) - 30.minutes
+-   end_time = Restaurant.closing(period(Time.current))
+    unless Time.current.between?(start_time, end_time)
+      render :nothing => true, :status => 403, :content_type => 'application/json'
+      return
+    end
     params = line_status_params
     params['restaurant_id'] = params['restaurant_id'].to_i + 1
     @line_status = LineStatus.new(params)
