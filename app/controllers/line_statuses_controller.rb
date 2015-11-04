@@ -37,7 +37,7 @@ class LineStatusesController < ApplicationController
   # GET /line_statuses
   # GET /line_statuses.json
   def index
-    @line_statuses = LineStatus.all.reverse
+    @line_statuses = LineStatus.all.reverse_order
   end
 
   # GET /line_statuses/1
