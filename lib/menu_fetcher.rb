@@ -35,6 +35,7 @@ module MenuFetcher
 
     rest = {
       6 => 'central',
+      7 => 'pco',
       8 => 'fisica',
       9 => 'quimica'
     }
@@ -67,9 +68,9 @@ module MenuFetcher
         end
 
         entry_array = entry[:cdpdia].split('<br>').map(&:strip)
-        
+
         entry_array.delete_if { |e| !(e =~ /([Rr]efresco|[Mm]inipão)/).nil? }
-        
+
         main = []
         optionals = []
         salad = []
@@ -90,7 +91,7 @@ module MenuFetcher
         entry_array.insert(0, main.join('/'))
         entry_array.insert(2, optionals.join('/'))
         entry_array.insert(4, salad.join('/'))
-        
+
         next if entry_array.size < 6
 
         menu_entry.update(

@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Restaurant.create([{name:'central'}, {name:'quimica'}, {name:'fisica'}])
+Restaurant.create([{name:'central'}, {name:'quimica'}, {name:'fisica'}, {name:'pco'}])
 
 case Rails.env
 when 'development'
-  (1..3).each do |index|
+  (1..4).each do |index|
     n = Random.rand(20)
     (0..(10+n)).each do
       submit = Restaurant.lunch_openning + Random.rand(7200).seconds

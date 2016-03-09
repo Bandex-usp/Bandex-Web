@@ -2,10 +2,10 @@ class LineStatusesController < ApplicationController
   before_action :set_line_status, only: [:show, :edit, :update, :destroy]
 
   def line_status
-
-    @lastSubmitDate = [DateTime.new, DateTime.new, DateTime.new]
-    weight_total = [0, 0, 0]
-    @currentLineStatus = [0, 0, 0]
+    @rest_count = Restaurant.count
+    @lastSubmitDate = Array.new(@rest_count) { DateTime.new }
+    weight_total = Array.new(@rest_count, 0)
+    @currentLineStatus = Array.new(@rest_count, 0)
 
     start_time = 45.minutes.ago
     end_time = Time.current
@@ -18,11 +18,11 @@ class LineStatusesController < ApplicationController
         submit_date = line_status['submit_date'].in_time_zone("Brasilia")
         weight = calculate_weight(end_time - submit_date)
         weight_total[restaurant_id] += weight
-        @lastSubmitDate[restaurant_id] = submit_date if submit_date > @lastSubmitDate[restaurant_id]
         @currentLineStatus[restaurant_id] += weight * status.to_f
+        @lastSubmitDate[restaurant_id] = submit_date if submit_date > @lastSubmitDate[restaurant_id]
     end
 
-    (0..2).each do |id|
+    (0...@rest_count).each do |id|
         if (weight_total[id] != 0)
             @currentLineStatus[id] = @currentLineStatus[id] / weight_total[id]
         end
