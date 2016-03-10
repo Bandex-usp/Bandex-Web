@@ -59,10 +59,10 @@ class LineStatusesController < ApplicationController
   def create
     start_time = Restaurant.openning(period(Time.current)) - 30.minutes
     end_time = Restaurant.closing(period(Time.current))
-    unless Time.current.between?(start_time, end_time)
-      render :nothing => true, :status => 403, :content_type => 'application/json'
-      return
-    end
+    # unless Time.current.between?(start_time, end_time)
+    #   render :nothing => true, :status => 403, :content_type => 'application/json'
+    #   return
+    # end
     params = line_status_params
     params['restaurant_id'] = params['restaurant_id'].to_i + 1
     @line_status = LineStatus.new(params)
