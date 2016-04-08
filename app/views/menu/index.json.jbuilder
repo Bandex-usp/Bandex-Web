@@ -1,6 +1,7 @@
 rest_count = @restaurant_entries.count
 json.array!(0...rest_count) do |restaurant_id|
 	json.restaurant_id restaurant_id
+  json.restaurant_name @restaurants[restaurant_id].name
 	entries = @restaurant_entries[restaurant_id]
 	json.set! 'days' do
 		json.array!(0..6) do |i|
